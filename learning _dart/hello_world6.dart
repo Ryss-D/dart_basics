@@ -3,9 +3,10 @@
 class Student {
   // something is private if it only can be acces inside the class (for example gpa)
   // the underscore("_") make the attribute(variables inside the class) private
-  double _gpa;
-  bool _isFailing;
-  String university;
+  late double _gpa;
+  late bool _isFailing;
+  late String university;
+  //we add late to avoid the erros, it means that variable can be initilized later
   // method its just a function inside of a class
   void printUniversity() {
     print(university);
@@ -34,8 +35,9 @@ class Student {
 void main() {
   Student newStudent = Student();
   newStudent._gpa =
-      4.0; // we cant modify directly the _gpa because we make int private, then we need to acces it via setters
-  //now we need a getter to get the value of the private value
+      3.0; // we cant modify directly the _gpa because we make int private, then we need to acces it via setters
+  //now we need a getter to get the value of the private value insted we have to use
+  newStudent.setGpa(4.0);
   newStudent.university = "Harvard university";
 
   newStudent.printUniversity();
@@ -43,3 +45,5 @@ void main() {
       .gpa); // then we acces to the _gpa but not directly (like a attribute ), now via the getter method that we define via arrow function
   print(newStudent.isFailing);
 }
+
+// a private attribute can just be modify in the same file

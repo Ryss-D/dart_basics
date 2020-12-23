@@ -32,7 +32,7 @@ class Student extends Person {
 
 class Rebel implements Person {
   void sayHello() {
-    // we can change the functions names because we are using the
+    // we cant change the functions names because we are using the
     // implements keyword
     print("why are you talking to me?");
   }
