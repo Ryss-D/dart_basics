@@ -44,6 +44,25 @@ void main() {
   print(newStudent
       .gpa); // then we acces to the _gpa but not directly (like a attribute ), now via the getter method that we define via arrow function
   print(newStudent.isFailing);
+  // Students newNd = Students(gpa:2.0, isFailing:false, university: "Yale")
+  // print(newNd)
 }
 
 // a private attribute can just be modify in the same file
+
+// thars a way to use constructors
+
+// class Students {
+//   double gpa;
+//   bool isFailing;
+//   String university;
+
+//   Students({double gpa, bool isFailing, String university}) {
+//     //constructor one
+//     this.gpa = gpa;
+//     this.isFailing = isFailing;
+//     this.university = university;
+//   }
+//   Students.positional([this.gpa, this.isFailing, this.university]); // constructor two
+//   // we can create and use different constructors
+// }

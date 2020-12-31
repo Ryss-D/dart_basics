@@ -30,7 +30,7 @@ sayHelloDefault([String name = "Ovidius"]) {
 //    do something
 //  }
 
-printSquare([int x]) {
+printSquare([int? x]) {
   if (x == null) {
     print("No number given");
   } else {
