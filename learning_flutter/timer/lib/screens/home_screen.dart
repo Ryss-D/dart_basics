@@ -1,40 +1,76 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  int _screenIndex = 0;
+  void setIndex(index) {
+    _screenIndex = index;
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> screens = [
+      Center(
+        child:
+            Text('First Screen', style: Theme.of(context).textTheme.headline1),
+      ),
+      Center(
+        child:
+            Text('Second Screen', style: Theme.of(context).textTheme.headline1),
+      ),
+      Center(
+        child:
+            Text('Third Screen', style: Theme.of(context).textTheme.headline1),
+      ),
+    ];
     return Scaffold(
-      body: Text('Hello, world'),
-      bottomNavigationBar: BottomNavBar(),
+      body: screens[_screenIndex],
+      bottomNavigationBar: BottomNavBar(
+        index: _screenIndex,
+        callback: setIndex,
+      ),
     );
   }
 }
 
 class BottomNavBar extends StatelessWidget {
+  final int index;
+  final Function callback;
+  const BottomNavBar({Key key, this.index, this.callback}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    _BuildNavBarItem(Icon icon, String label) {
+      return BottomNavigationBarItem(
+        icon: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: icon,
+        ),
+        label: label,
+      );
+    }
+
     return BottomNavigationBar(
         elevation: 0,
+        currentIndex: index,
+        unselectedFontSize: 15,
+        selectedFontSize: 15,
         unselectedItemColor: Theme.of(context).accentColor,
         backgroundColor: Theme.of(context).backgroundColor,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.timer),
-            label: 'Stopwatch',
-          ), //tittle instead label has been deprecated
-          BottomNavigationBarItem(
-              icon: Icon(Icons.slow_motion_video), label: 'Timer'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+          _BuildNavBarItem(
+            Icon(Icons.timer),
+            'Stopwatch',
+          ),
+          _BuildNavBarItem(
+            Icon(Icons.slow_motion_video),
+            'Timer',
+          ),
+          _BuildNavBarItem(
+            Icon(Icons.settings),
+            'Settings',
           )
-        ]);
+        ],
+        onTap: (ind) {
+          callback(ind);
+        });
   }
-}
-
-_BuildNavBarItem(Icon icon, String label) {
-  return BottomNavigationBarItem(
-    icon: icon,
-    label: label,
-  );
 }

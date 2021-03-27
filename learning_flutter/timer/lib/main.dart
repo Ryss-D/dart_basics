@@ -12,6 +12,12 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.white54,
         backgroundColor: Colors.pink,
         scaffoldBackgroundColor: Colors.black,
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            fontSize: 40,
+            color: Colors.white,
+          ),
+        ),
       ),
       home: HomeScreen(),
     );
