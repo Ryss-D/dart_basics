@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   int _screenIndex = 0;
+
   void setIndex(index) {
-    _screenIndex = index;
+    setState(() {
+      _screenIndex = index;
+    });
   }
 
   @override
@@ -32,10 +40,16 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
   final int index;
   final Function callback;
   const BottomNavBar({Key key, this.index, this.callback}) : super(key: key);
+
+  @override
+  _BottomNavBarState createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     _BuildNavBarItem(Icon icon, String label) {
@@ -50,9 +64,9 @@ class BottomNavBar extends StatelessWidget {
 
     return BottomNavigationBar(
         elevation: 0,
-        currentIndex: index,
+        currentIndex: widget.index,
         unselectedFontSize: 15,
-        selectedFontSize: 15,
+        selectedFontSize: 16,
         unselectedItemColor: Theme.of(context).accentColor,
         backgroundColor: Theme.of(context).backgroundColor,
         items: <BottomNavigationBarItem>[
@@ -70,7 +84,8 @@ class BottomNavBar extends StatelessWidget {
           )
         ],
         onTap: (ind) {
-          callback(ind);
+          //ind its the default index on nav bar and is referenced to list
+          widget.callback(ind);
         });
   }
 }
