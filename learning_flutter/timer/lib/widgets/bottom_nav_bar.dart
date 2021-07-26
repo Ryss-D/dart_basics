@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:timer/screens/options_screen.dart';
 import 'package:timer/screens/stopwatch_screen_.dart';
 import 'package:timer/screens/timer_screen.dart';
+import 'package:timer/state/nav_bar_state.dart';
 
 class BottomNavBar extends StatefulWidget {
-  final int index;
-  final Function callback;
   const BottomNavBar({
     Key key,
-    this.index,
-    this.callback,
   }) : super(key: key);
 
   @override
@@ -17,7 +14,15 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  int index;
+
   @override
+  void didChangeDependecies() {
+    super.didChangeDependencies();
+    NavBarStateState data = NavBarState.of(context);
+    index = data.index;
+  }
+
   Widget build(BuildContext context) {
     _BuildNavBarItem(Icon icon, String label) {
       return BottomNavigationBarItem(
@@ -31,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
     return BottomNavigationBar(
         elevation: 0,
-        currentIndex: widget.index,
+        currentIndex: index,
         unselectedFontSize: 15,
         selectedFontSize: 16,
         unselectedItemColor: Theme.of(context).accentColor,
@@ -52,7 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ],
         onTap: (ind) {
           //ind its the default index on nav bar and is referenced to list
-          widget.callback(ind);
+          NavBarState.of(context).setIndex(ind);
 
           switch (ind) {
             case 0:
@@ -67,10 +72,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             case 2:
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => OptionsScreen(
-                    screenIndex: ind,
-                    setIndexCallback: widget.callback,
-                  ),
+                  builder: (context) => OptionsScreen(),
                 ),
               ); // thats just another way to handle navigation
               break;
