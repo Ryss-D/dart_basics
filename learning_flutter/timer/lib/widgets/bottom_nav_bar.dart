@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:timer/screens/options_screen.dart';
-import 'package:timer/screens/stopwatch_screen_.dart';
-import 'package:timer/screens/timer_screen.dart';
-import 'package:timer/state/nav_bar_state.dart';
+
+import '../screens/options_screen.dart';
+import '../screens/stopwatch_screen.dart';
+import '../screens/timer_screen.dart';
+import '../state/nav_bar_state.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
@@ -23,14 +24,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
     index = data.index;
   }
 
+  @override
   Widget build(BuildContext context) {
-    _BuildNavBarItem(Icon icon, String label) {
+    _BuildNavBarItem(Icon icon, String title) {
       return BottomNavigationBarItem(
         icon: Padding(
           padding: const EdgeInsets.all(5.0),
           child: icon,
         ),
-        label: label,
+        label: title,
       );
     }
 
@@ -79,6 +81,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             default:
               Navigator.of(context)
                   .pushReplacementNamed(StopwatchScreen.routeName);
+              break;
           }
         });
   }
