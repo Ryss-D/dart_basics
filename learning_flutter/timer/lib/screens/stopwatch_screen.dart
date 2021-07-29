@@ -21,7 +21,8 @@ class StopwatchScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline1),
                 );
               } else {
-                return PlayButton(onPressed: state.start);
+                return Center(
+                    child: PlayButton(onPressed: state.start, size: 200));
               }
             },
           ),

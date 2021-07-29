@@ -41,6 +41,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         currentIndex: index,
         unselectedFontSize: 15,
         selectedFontSize: 16,
+        selectedItemColor: Theme.of(context).primaryColor,
         unselectedItemColor: Theme.of(context).accentColor,
         backgroundColor: Theme.of(context).backgroundColor,
         items: <BottomNavigationBarItem>[

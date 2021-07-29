@@ -10,6 +10,7 @@ class TimerState extends GetxController {
   var startingSeconds = RxString("0"); // Rx<int>(0) they are equivalent
   var displayString = Rx<String>("25:00");
   var isRunning = false.obs;
+  var isStarted = Rx<bool>(false);
 
   var minutesInputController = TextEditingController().obs..value.text = "25";
   // minutesInputController.value.text double dot value notation below are equivalent to this
@@ -23,12 +24,16 @@ class TimerState extends GetxController {
       _tsw.start();
       periodicUpdateDisplayString();
       isRunning.value = true;
+      isStarted.value = true;
     }
   }
 
   void pause() {
     if (_tsw.isRunning) {
       _tsw.stop();
+      print("stopping perioridic updated");
+      t.cancel(); //stops the periordic task to save ram effort and prevent a memory leak
+      isRunning.value = false;
     }
   }
 
@@ -36,17 +41,23 @@ class TimerState extends GetxController {
     if (!_tsw.isRunning) {
       _tsw.start();
       //periodic function
+      periodicUpdateDisplayString();
+      isRunning.value = true;
     }
   }
 
-  void reser() {
+  void reset() {
+    _tsw.stop();
     _tsw.reset();
     //stop periodic function
+    t.cancel();
+    isRunning.value = false;
+    isStarted.value = false;
   }
 
   void periodicUpdateDisplayString() {
     print("Starting periodic update");
-    Timer.periodic(Duration(seconds: 1), (t) {
+    t = Timer.periodic(Duration(seconds: 1), (t) {
       displayString.value = updateDisplayString();
       print(displayString.value);
     });
@@ -69,5 +80,12 @@ class TimerState extends GetxController {
     str +=
         "${((startingSec - _tsw.elapsed.inSeconds) % 60).toString().padLeft(2, "0")}";
     return str;
+  }
+
+  void disponse() {
+    //thats a cleanes function
+    t.cancel();
+    minutesInputController.value.dispose();
+    secondsInputController.value.dispose();
   }
 }

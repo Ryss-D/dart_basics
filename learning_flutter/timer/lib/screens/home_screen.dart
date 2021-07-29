@@ -6,7 +6,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _screenIndex = 0;
+  int _screenIndex = 1;
 
   void setIndex(index) {
     setState(() {

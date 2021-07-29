@@ -18,12 +18,13 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: Colors.white,
-            accentColor: Colors.white54,
-            backgroundColor: Colors.pink,
+            accentColor: Colors.white30,
+            backgroundColor: Colors.pink[200],
             scaffoldBackgroundColor: Colors.black,
             textTheme: TextTheme(
               headline1: TextStyle(
-                fontSize: 40,
+                fontSize: 75,
+                fontWeight: FontWeight.w600,
                 color: Colors.white,
               ),
             ),
