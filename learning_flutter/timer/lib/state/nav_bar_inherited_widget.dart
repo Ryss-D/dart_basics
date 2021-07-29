@@ -8,8 +8,11 @@ class NavBarInheritedWidget extends InheritedWidget {
   NavBarInheritedWidget({
     this.data,
     Widget child,
-  }) : super(child: child);
+  }) : super(
+            child:
+                child); // super is the parent class or the acces of the parent class
 
   @override
-  bool updateShouldNotify(InheritedWidget oldWidget) => true;
+  bool updateShouldNotify(InheritedWidget oldWidget) =>
+      true; // that means no matter what value you get just rebuild everythibng
 }

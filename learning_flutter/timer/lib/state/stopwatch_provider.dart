@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class StopwatchProvier extends ChangeNotifier {
+class StopwatchProvier with ChangeNotifier {
   Stopwatch _sw = Stopwatch();
   String _returnString = '00:00';
   Timer t;

@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             TimerScreen.routeName: (context) => TimerScreen(),
             OptionsScreen.routeName: (context) => OptionsScreen(),
           },
-          home: StopwatchScreen(),
+          home: TimerScreen(),
         ),
       ),
     );

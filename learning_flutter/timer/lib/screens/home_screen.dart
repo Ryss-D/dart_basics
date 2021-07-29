@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:timer/widgets/bottom_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -31,9 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
             Text('Third Screen', style: Theme.of(context).textTheme.headline1),
       ),
     ];
+
     return Scaffold(
       body: screens[_screenIndex],
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar:
+          BottomNavBar(index: _screenIndex, callback: setIndex),
     );
   }
 }
@@ -58,7 +59,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     _BuildNavBarItem(Icon icon, String title) {
       return BottomNavigationBarItem(
         icon: Padding(padding: const EdgeInsets.all(10), child: icon),
-        title: Text(title),
+        label: title,
       );
     }
 

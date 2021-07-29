@@ -18,7 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int index;
 
   @override
-  void didChangeDependecies() {
+  void didChangeDependencies() {
     super.didChangeDependencies();
     NavBarStateState data = NavBarState.of(context);
     index = data.index;
