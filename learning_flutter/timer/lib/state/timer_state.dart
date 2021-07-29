@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class TimerState extends GetxController {
@@ -10,9 +11,15 @@ class TimerState extends GetxController {
   var displayString = Rx<String>("25:00");
   var isRunning = false.obs;
 
+  var minutesInputController = TextEditingController().obs..value.text = "25";
+  // minutesInputController.value.text double dot value notation below are equivalent to this
+  // the doble dot just means copy the value onthis line and make value with that
+  var secondsInputController = TextEditingController().obs..value.text = "00";
+
   void start() {
     print("Starting timer");
     if (!_tsw.isRunning) {
+      displayString.value = updateDisplayString();
       _tsw.start();
       periodicUpdateDisplayString();
       isRunning.value = true;
@@ -47,11 +54,12 @@ class TimerState extends GetxController {
 
   String updateDisplayString() {
     String str = "";
-    int startingMin = int.parse(startingMinutes.value);
-    int startingSec = int.parse(startingSeconds.value);
+    int startingMin = int.parse(minutesInputController.value.text);
+    // in this time we have to pass. text that because when we just use .value passes the controller
+    int startingSec = int.parse(secondsInputController.value.text);
 
 // 24,59
-    if ((_tsw.elapsed.inSeconds % 60) > 0) {
+    if ((startingSec - _tsw.elapsed.inSeconds % 60) < 0) {
       str += "${startingMin - _tsw.elapsed.inMinutes - 1}:";
     } else {
       str += "${startingMin - _tsw.elapsed.inMinutes}:";

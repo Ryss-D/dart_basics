@@ -11,23 +11,23 @@ class StopwatchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ChangeNotifierProvider(
-        create: (_) => StopwatchProvier(),
-        child: Consumer<StopwatchProvier>(
-          builder: (ctx, state, _) {
-            if (state.isRunning) {
-              return Center(
-                child: Text(state.elapsedTimeString,
-                    style: Theme.of(context).textTheme.headline1),
-              );
-            } else {
-              return PlayButton(onPressed: state.start);
-            }
-          },
+        body: ChangeNotifierProvider(
+          create: (_) => StopwatchProvier(),
+          child: Consumer<StopwatchProvier>(
+            builder: (ctx, state, _) {
+              if (state.isRunning) {
+                return Center(
+                  child: Text(state.elapsedTimeString,
+                      style: Theme.of(context).textTheme.headline1),
+                );
+              } else {
+                return PlayButton(onPressed: state.start);
+              }
+            },
+          ),
         ),
-      ),
-      //bottomNavigationBar: BottomNavBar()
-      // widget. allows to acces to information on the widget instead of the state, that is were we ara now:w,
-    );
+        bottomNavigationBar: BottomNavBar()
+        // widget. allows to acces to information on the widget instead of the state, that is were we ara now:w,
+        );
   }
 }
