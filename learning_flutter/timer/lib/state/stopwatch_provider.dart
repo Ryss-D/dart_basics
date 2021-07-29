@@ -5,16 +5,19 @@ import 'package:flutter/material.dart';
 class StopwatchProvier with ChangeNotifier {
   Stopwatch _sw = Stopwatch();
   String _returnString = '00:00';
+  bool _isStarted = false;
   Timer t;
 
   String get time => _returnString;
 
   bool get isRunning => _sw.isRunning;
+  bool get isStarted => _isStarted;
 
   String get elapsedTimeString => _returnString;
 
   void start() {
     _sw.start();
+    _isStarted = true;
     updateSWString();
     notifyListeners();
   }
@@ -25,20 +28,29 @@ class StopwatchProvier with ChangeNotifier {
 
   void pause() {
     _sw.stop();
+    t.cancel();
+    notifyListeners();
   }
 
   void unpause() {
-    if (_sw.isRunning) {
+    if (!_sw.isRunning) {
       _sw.start();
+      updateSWString();
+      notifyListeners();
     }
   }
 
   void reset() {
+    _sw.stop();
     _sw.reset();
+    t.cancel();
+    _isStarted = false;
+    _returnString = "00:00";
+    notifyListeners();
   }
 
   void updateSWString() {
-    Timer.periodic(Duration(seconds: 1), (t) {
+    t = Timer.periodic(Duration(seconds: 1), (t) {
       _returnString = _buildReturnString();
       print(_returnString);
       notifyListeners();

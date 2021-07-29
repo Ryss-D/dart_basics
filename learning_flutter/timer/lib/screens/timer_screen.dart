@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:timer/state/timer_state.dart';
+import 'package:timer/widgets/app_bar.dart';
 import 'package:timer/widgets/pause_button.dart';
 import 'package:timer/widgets/play_button.dart';
 import 'package:timer/widgets/reset_button.dart';
+import 'package:timer/widgets/timer_running_with_botton_button.dart';
 
 import '../widgets/bottom_nav_bar.dart';
 
@@ -13,15 +15,7 @@ class TimerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final TimerState state = Get.put(TimerState());
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
-          leading: Text(''),
-          actions: [
-            ResetButton(
-              onPressed: state.reset,
-              size: 50,
-            )
-          ]),
+      appBar: buildAppBar(context: context, reset: state.reset),
       body: Obx(() {
         if (!state.isStarted.value) {
           return Column(
@@ -74,30 +68,11 @@ class TimerScreen extends StatelessWidget {
             ],
           );
         } else {
-          return Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(state.displayString.value,
-                      style: Theme.of(context).textTheme.headline1.copyWith(
-                          color: state.isRunning.value
-                              ? Theme.of(context).primaryColor
-                              : Theme.of(context).accentColor)),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: state.isRunning.value
-                    ? Container(
-                        alignment: Alignment.topCenter,
-                        child: PauseButton(onPressed: state.pause, size: 85))
-                    : Container(
-                        alignment: Alignment.topCenter,
-                        child: PlayButton(onPressed: state.unpause, size: 85)),
-              )
-            ],
+          return TimerRunningWithBottomButton(
+            displayString: state.displayString.value,
+            isRunning: state.isRunning.value,
+            pauseFunc: state.pause,
+            unpauseFunc: state.unpause,
           );
         }
       }),
