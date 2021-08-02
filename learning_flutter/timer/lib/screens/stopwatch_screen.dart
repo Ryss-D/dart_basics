@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:timer/state/stopwatch_provider.dart';
-import 'package:timer/widgets/app_bar.dart';
-import 'package:timer/widgets/bottom_nav_bar.dart';
-import 'package:timer/widgets/play_button.dart';
-import 'package:timer/widgets/reset_button.dart';
-import 'package:timer/widgets/timer_running_with_botton_button.dart';
+import '/state/stopwatch_provider.dart';
+import '/widgets/app_bar.dart';
+import '/widgets/bottom_nav_bar.dart';
+import '/widgets/play_button.dart';
+import '/widgets/reset_button.dart';
+import '/widgets/timer_running_with_botton_button.dart';
 
 class StopwatchScreen extends StatelessWidget {
   static const routeName = "/stopwatch-screen";

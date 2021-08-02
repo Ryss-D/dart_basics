@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:timer/widgets/custom_button.dart';
+
+import 'custom_button.dart';
 
 class PlayButton extends StatelessWidget {
   final Function onPressed;

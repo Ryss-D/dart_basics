@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:timer/widgets/reset_button.dart';
+
+import 'reset_button.dart';
 
 AppBar buildAppBar({BuildContext context, Function reset}) {
   return AppBar(
