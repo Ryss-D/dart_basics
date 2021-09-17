@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:l_redux/redux/middleware.dart';
 import 'package:l_redux/redux/store.dart';
 import 'package:l_redux/redux/reducers.dart';
 import 'package:l_redux/screens/home_screen.dart';
@@ -7,7 +8,10 @@ import 'package:redux/redux.dart';
 
 void main() {
   Store<AppState> _store =
-      Store<AppState>(reducers, initialState: AppState.initial());
+      //
+      //Store<AppState>(reducers, initialState: AppState.initial());
+      Store<AppState>(reducers,
+          initialState: AppState.initial(), middleware: [appStateMiddleware]);
   runApp(MyApp(store: _store));
 }
 

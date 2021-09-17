@@ -9,3 +9,17 @@ class UpdateKM extends Action {
     this.payload,
   );
 }
+
+class UpdateKMCleaned extends Action {
+  String payload;
+
+  UpdateKMCleaned(
+    this.payload,
+  );
+}
+
+class UpdateMiles extends Action {
+  String payload;
+
+  UpdateMiles(this.payload);
+}
