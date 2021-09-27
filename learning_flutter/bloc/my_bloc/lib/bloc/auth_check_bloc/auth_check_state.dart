@@ -4,3 +4,7 @@ part of 'auth_check_bloc.dart';
 abstract class AuthCheckState {}
 
 class AuthCheckInitial extends AuthCheckState {}
+
+class AuthCheckAuthenticated extends AuthCheckState {}
+
+class AuthCheckUnauthenticated extends AuthCheckState {}

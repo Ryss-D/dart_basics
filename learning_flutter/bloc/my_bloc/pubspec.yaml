@@ -25,6 +25,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^7.2.0
+  lint: ^1.7.2
 
 dev_dependencies:
   flutter_test:
