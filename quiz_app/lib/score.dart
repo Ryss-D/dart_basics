@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class Score extends StatelessWidget {
   final int score;
+  VoidCallback resetHandler;
 
-  Score(this.score);
+  Score(this.score, this.resetHandler);
 
   String get scorePhrase {
     String scoreText;
@@ -12,7 +13,7 @@ class Score extends StatelessWidget {
     } else if (score <= 1) {
       scoreText = 'Less than one point :((';
     } else {
-      scoreText = 'Wird scoreee :(((';
+      scoreText = 'Weird score :(((';
     }
     return scoreText;
   }
@@ -20,10 +21,16 @@ class Score extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        scorePhrase,
-        style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-        textAlign: TextAlign.center,
+      child: Column(
+        children: [
+          Text(
+            scorePhrase,
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          ElevatedButton(onPressed: resetHandler, child: Text("Restart button"))
+        ],
+        mainAxisAlignment: MainAxisAlignment.center,
       ),
     );
   }

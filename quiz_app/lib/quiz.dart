@@ -27,6 +27,7 @@ class Quiz extends StatelessWidget {
           );
         }).toList() // we use toList() to be able to add the values to children list
       ],
+      mainAxisAlignment: MainAxisAlignment.center,
     );
   }
 }
