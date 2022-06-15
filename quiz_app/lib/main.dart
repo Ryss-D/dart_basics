@@ -16,21 +16,36 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
+  int _totalScore = 0;
   static const _questions = [
     {
       'questionText': 'question 1',
-      'answers': ['answer1', 'answer2', 'answer3']
+      'answers': [
+        {'text': 'answer1', 'score': 1},
+        {'text': 'answer2', 'score': 1},
+        {'text': 'answer3', 'score': 1},
+      ]
     },
     {
       'questionText': 'question 2',
-      'answers': ['answer1', 'answer2', 'answer3']
+      'answers': [
+        {'text': 'answer1', 'score': 1},
+        {'text': 'answer2', 'score': 1},
+        {'text': 'answer3', 'score': 1},
+      ]
     },
     {
       'questionText': 'question 3',
-      'answers': ['answer1', 'answer2', 'answer3']
+      'answers': [
+        {'text': 'answer1', 'score': 1},
+        {'text': 'answer2', 'score': 1},
+        {'text': 'answer3', 'score': 1},
+      ]
     },
   ];
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
+
     if (_questionIndex < _questions.length) {
       setState(() {
         _questionIndex = _questionIndex + 1;
@@ -61,7 +76,7 @@ class _MyAppState extends State<MyApp> {
               questionIndex: _questionIndex,
               questions: _questions,
             )
-          : Score(),
+          : Score(_totalScore),
     ));
   }
 }
