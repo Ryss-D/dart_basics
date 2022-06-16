@@ -76,7 +76,7 @@ class MyHomePage extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.all(10),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               TextField(
                                 decoration: InputDecoration(labelText: 'Title'),
