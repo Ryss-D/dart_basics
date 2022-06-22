@@ -10,7 +10,7 @@ class TransactionList extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 450,
       //child: SingleChildScrollView(
       //child: Column(
       // List view its equivalent to SingleChildScrollView + Column
