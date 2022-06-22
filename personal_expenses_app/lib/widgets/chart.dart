@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../models/transaction.dart';
+import './chart_bar.dart';
 
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransacionts;
@@ -33,17 +34,37 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get totalSpending {
+    return groupedTransactionsValues.fold(0.0, (sum, item) {
+      return sum + (item['amount'] as double);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
-      child: Row(
-        children: groupedTransactionsValues.map(
-          (sTx) {
-            return Text('${sTx['day']} : ${sTx['amount']}');
-          },
-        ).toList(),
+      child: Padding(
+        //pading is a container who only can have padding
+        padding: EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactionsValues.map(
+            (sTx) {
+              return Flexible(
+                fit: FlexFit.tight,
+                child: ChartBar(
+                  label: sTx['day'].toString(),
+                  spendingAmount: sTx['amount'] as double,
+                  spendingPercentageTotal: totalSpending == 0.0
+                      ? 0.0
+                      : (sTx['amount'] as double) / totalSpending,
+                ),
+              );
+            },
+          ).toList(),
+        ),
       ),
     );
   }
