@@ -16,12 +16,12 @@ class MyApp extends StatelessWidget {
       title: 'Expenses App',
       theme: ThemeData(
         textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: TextStyle(
-                fontFamily: 'Open Sans',
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            headline6: TextStyle(
+              fontFamily: 'Open Sans',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
+            button: TextStyle(color: Colors.white)),
         appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(
               fontFamily: 'Open Sans',
