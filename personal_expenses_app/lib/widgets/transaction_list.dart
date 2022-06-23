@@ -15,23 +15,27 @@ class TransactionList extends StatelessWidget {
         // List view its equivalent to SingleChildScrollView + Column
         // We can also add Scroll direction to list view to use SingleChildScrollView + Row
         //ListView.build make a lazy load of widgets(just render what you see)
-        ? Column(
-            children: <Widget>[
-              Text(
-                'No transactions added yet',
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: 200,
-                child: Image.asset(
-                  'assets/images/waiting.png',
-                  fit: BoxFit.cover,
-                ),
-              )
-            ],
+        ? LayoutBuilder(
+            builder: ((context, constraints) {
+              return Column(
+                children: <Widget>[
+                  Text(
+                    'No transactions added yet',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: constraints.maxHeight * 0.6,
+                    child: Image.asset(
+                      'assets/images/waiting.png',
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                ],
+              );
+            }),
           )
         : ListView.builder(
             itemBuilder: (context, index) {
