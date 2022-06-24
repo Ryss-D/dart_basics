@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:personal_expenses_app/widgets/adaptative_elevated_button.dart';
+import 'package:personal_expenses_app/widgets/adaptive_elevated_button.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
@@ -112,7 +112,10 @@ class _NewTransactionState extends State<NewTransaction> {
                   ],
                 ),
               ),
-              AdaptativeElevatedButton(_submitData),
+              AdaptiveElevatedButton(
+                text: "Add transaction",
+                submitFunction: _submitData,
+              ),
             ],
           ),
         ),
