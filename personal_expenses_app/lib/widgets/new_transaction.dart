@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:personal_expenses_app/widgets/adaptative_elevated_button.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
@@ -66,6 +70,9 @@ class _NewTransactionState extends State<NewTransaction> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
+              // CupertinoTextField(
+              // placeholder: 'Title',
+              // ),
               TextField(
                 decoration: InputDecoration(labelText: 'Title'),
                 //onChanged: (value) {
@@ -105,14 +112,7 @@ class _NewTransactionState extends State<NewTransaction> {
                   ],
                 ),
               ),
-              ElevatedButton(
-                child: Text(
-                  'Add transaction',
-                  style: Theme.of(context).textTheme.button,
-                ),
-                //style: color text purple,
-                onPressed: _submitData,
-              ),
+              AdaptativeElevatedButton(_submitData),
             ],
           ),
         ),

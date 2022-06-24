@@ -162,7 +162,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Show chart'),
+                  Text(
+                    'Show chart',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                   //.adaptative allowus to adjutn the look based on the operating system we are running
                   Switch.adaptive(
                     activeColor: Theme.of(context).colorScheme.secondary,
