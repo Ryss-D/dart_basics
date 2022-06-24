@@ -168,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: (MediaQuery.of(context).size.height -
                               appBar.preferredSize.height -
                               MediaQuery.of(context).padding.top) *
-                          0.35,
+                          0.65,
                       child: Chart(_recentTransactions),
                     )
                   : txListWidget,

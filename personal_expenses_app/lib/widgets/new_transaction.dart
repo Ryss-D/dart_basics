@@ -52,61 +52,69 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(labelText: 'Title'),
-              //onChanged: (value) {
-              //titleInput = value;
-              //},
-              controller: _titleController,
-              onSubmitted: (_) => _submitData(),
-            ),
-            TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
-              //onChanged: (value) {
-              //amountInput = value;
-              //},
-              controller: _amountController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              onSubmitted: (_) => _submitData(),
-            ),
-            Container(
-              height: 70,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(_selectedDate == null
-                        ? 'No date choosen'
-                        : 'Picked date: ${DateFormat('dd-MM-yyyy H:mm').format(_selectedDate)}'),
-                  ),
-                  TextButton(
-                    //style: color text purple,
-                    child: Text(
-                      'Choose date',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Container(
+          padding: EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+            // this allowus to respect the space of widget with the keyboard and dont overlaping it with the keyboard
+            bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(labelText: 'Title'),
+                //onChanged: (value) {
+                //titleInput = value;
+                //},
+                controller: _titleController,
+                onSubmitted: (_) => _submitData(),
+              ),
+              TextField(
+                decoration: InputDecoration(labelText: 'Amount'),
+                //onChanged: (value) {
+                //amountInput = value;
+                //},
+                controller: _amountController,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                onSubmitted: (_) => _submitData(),
+              ),
+              Container(
+                height: 70,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(_selectedDate == null
+                          ? 'No date choosen'
+                          : 'Picked date: ${DateFormat('dd-MM-yyyy H:mm').format(_selectedDate)}'),
                     ),
-                    onPressed: _presentDatePicker,
-                  )
-                ],
+                    TextButton(
+                      //style: color text purple,
+                      child: Text(
+                        'Choose date',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: _presentDatePicker,
+                    )
+                  ],
+                ),
               ),
-            ),
-            ElevatedButton(
-              child: Text(
-                'Add transaction',
-                style: Theme.of(context).textTheme.button,
+              ElevatedButton(
+                child: Text(
+                  'Add transaction',
+                  style: Theme.of(context).textTheme.button,
+                ),
+                //style: color text purple,
+                onPressed: _submitData,
               ),
-              //style: color text purple,
-              onPressed: _submitData,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
