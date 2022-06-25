@@ -1,3 +1,6 @@
 [submodule "personal_expenses_manager"]
 	path = personal_expenses_manager
 	url = https://github.com/Ryss-D/personal_expenses_manager
+[submodule "quiz_app"]
+	path = quiz_app
+	url = https://github.com/Ryss-D/quiz_app
