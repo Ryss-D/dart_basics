@@ -4,3 +4,6 @@
 [submodule "quiz_app"]
 	path = quiz_app
 	url = https://github.com/Ryss-D/quiz_app
+[submodule "meals_app"]
+	path = meals_app
+	url = git@github.com:Ryss-D/meals_app.git
