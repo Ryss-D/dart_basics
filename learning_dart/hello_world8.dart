@@ -24,7 +24,8 @@ class Rectangle implements Shape {
   }
 }
 
-// super let us acces thing in the parent class
+// super let us acces things in the parent class
+// in this case we instanciate the clase passing data from child class
 class Square extends Rectangle {
   double side;
 
