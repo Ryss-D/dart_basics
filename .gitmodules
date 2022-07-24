@@ -10,3 +10,6 @@
 [submodule "shop_app"]
 	path = shop_app
 	url = git@github.com:Ryss-D/shop_app.git
+[submodule "places_app"]
+	path = places_app
+	url = git@github.com:Ryss-D/places_app.git
