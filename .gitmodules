@@ -13,3 +13,9 @@
 [submodule "places_app"]
 	path = places_app
 	url = git@github.com:Ryss-D/places_app.git
+[submodule "chat_app"]
+	path = chat_app
+	url = git@github.com:Ryss-D/chat_app.git
+[submodule "flutter_native_comunication"]
+	path = flutter_native_comunication
+	url = git@github.com:Ryss-D/flutter_native_comunication.git
