@@ -6,45 +6,73 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
-  final CounterCubit _counterCubit = CounterCubit();
+//   final CounterCubit _counterCubit = CounterCubit();
+//   Route? onGenerateRoute(RouteSettings routeSettings) {
+//     switch (routeSettings.name) {
+//       case '/':
+//         return MaterialPageRoute(
+//           builder: (_) => BlocProvider.value(
+//             value: _counterCubit,
+//             child: HomeScreen(
+//               title: 'HomeScreen',
+//               color: Colors.blueAccent,
+//             ),
+//           ),
+//         );
+//       case '/second':
+//         return MaterialPageRoute(
+//           builder: (_) => BlocProvider.value(
+//             value: _counterCubit,
+//             child: SecondScreen(
+//               title: 'SecondScreen',
+//               color: Colors.redAccent,
+//             ),
+//           ),
+//         );
+//       case '/third':
+//         return MaterialPageRoute(
+//           builder: (_) => BlocProvider.value(
+//             value: _counterCubit,
+//             child: ThirdScreen(
+//               title: 'ThirdScreen',
+//               color: Colors.greenAccent,
+//             ),
+//           ),
+//         );
+//       default:
+//         break;
+//     }
+//   }
+
+//   void dispose() {
+//     _counterCubit.close();
+//   }
+// }
   Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _counterCubit,
-            child: HomeScreen(
-              title: 'HomeScreen',
-              color: Colors.blueAccent,
-            ),
+          builder: (_) => HomeScreen(
+            title: 'HomeScreen',
+            color: Colors.blueAccent,
           ),
         );
       case '/second':
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _counterCubit,
-            child: SecondScreen(
-              title: 'SecondScreen',
-              color: Colors.redAccent,
-            ),
+          builder: (_) => SecondScreen(
+            title: 'SecondScreen',
+            color: Colors.redAccent,
           ),
         );
       case '/third':
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _counterCubit,
-            child: ThirdScreen(
-              title: 'ThirdScreen',
-              color: Colors.greenAccent,
-            ),
+          builder: (_) => ThirdScreen(
+            title: 'ThirdScreen',
+            color: Colors.greenAccent,
           ),
         );
       default:
         break;
     }
-  }
-
-  void dispose() {
-    _counterCubit.close();
   }
 }

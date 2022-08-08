@@ -24,6 +24,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    //wraping MareaialApp with a bloc with make the bloc
+    //avaliable to the entire app and screens
     return BlocProvider<CounterCubit>(
       create: (context) => CounterCubit(),
       child: MaterialApp(
@@ -32,6 +34,7 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
         ),
         onGenerateRoute: _appRouter.onGenerateRoute,
+        //! Named routes approach
         // routes: {
         //   '/': (context) => BlocProvider.value(
         //         value: _counterCubit,
@@ -61,13 +64,13 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
-    @override
-    void dispose() {
-      //we have to close the Cubit manually becasuse BlocProvider.value
-      //dont close the Cubit automatically as BlocProvider
-      _appRouter.dispose();
-      //_counterCubit.close();
-      super.dispose();
-    }
+    //   @override
+    //   void dispose() {
+    //     //we have to close the Cubit manually becasuse BlocProvider.value
+    //     //dont close the Cubit automatically as BlocProvider
+    //     _appRouter.dispose();
+    //     //_counterCubit.close();
+    //     super.dispose();
+    //   }
   }
 }
