@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:bloc_access_and_navigation/presentation/router/app_router.dart';
 import 'package:bloc_access_and_navigation/presentation/screens/second_screen.dart';
 import 'package:bloc_access_and_navigation/presentation/screens/third_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final CounterCubit _counterCubit = CounterCubit();
+  //final CounterCubit _counterCubit = CounterCubit();
+  final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -29,29 +31,30 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        routes: {
-          '/': (context) => BlocProvider.value(
-                value: _counterCubit,
-                child: HomeScreen(
-                  title: 'HomeScreen',
-                  color: Colors.blueAccent,
-                ),
-              ),
-          '/second': (context) => BlocProvider.value(
-                value: _counterCubit,
-                child: SecondScreen(
-                  title: 'SecondScreen',
-                  color: Colors.redAccent,
-                ),
-              ),
-          '/third': (context) => BlocProvider.value(
-                value: _counterCubit,
-                child: ThirdScreen(
-                  title: 'ThirdScreen',
-                  color: Colors.greenAccent,
-                ),
-              )
-        },
+        onGenerateRoute: _appRouter.onGenerateRoute,
+        // routes: {
+        //   '/': (context) => BlocProvider.value(
+        //         value: _counterCubit,
+        //         child: HomeScreen(
+        //           title: 'HomeScreen',
+        //           color: Colors.blueAccent,
+        //         ),
+        //       ),
+        //   '/second': (context) => BlocProvider.value(
+        //         value: _counterCubit,
+        //         child: SecondScreen(
+        //           title: 'SecondScreen',
+        //           color: Colors.redAccent,
+        //         ),
+        //       ),
+        //   '/third': (context) => BlocProvider.value(
+        //         value: _counterCubit,
+        //         child: ThirdScreen(
+        //           title: 'ThirdScreen',
+        //           color: Colors.greenAccent,
+        //         ),
+        //       )
+        // },
         home: const HomeScreen(
           title: 'Flutter Demo Home Page',
           color: Colors.blueAccent,
@@ -62,7 +65,8 @@ class _MyAppState extends State<MyApp> {
     void dispose() {
       //we have to close the Cubit manually becasuse BlocProvider.value
       //dont close the Cubit automatically as BlocProvider
-      _counterCubit.close();
+      _appRouter.dispose();
+      //_counterCubit.close();
       super.dispose();
     }
   }
