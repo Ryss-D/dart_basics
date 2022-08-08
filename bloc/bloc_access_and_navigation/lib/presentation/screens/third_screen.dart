@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../logic/cubit/counter_cubit.dart';
-import './second_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key, required this.title, required this.color})
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({Key? key, required this.title, required this.color})
       : super(key: key);
 
   final String title;
   final Color color;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ThirdScreen> createState() => _ThirdScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ThirdScreenState extends State<ThirdScreen> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -89,47 +88,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              // SizedBox(
-              //   height: 24,
-              // ),
-              // MaterialButton(
-              //   color: widget.color,
-              //   onPressed: () {
-              //     Navigator.of(context).push(
-              //       MaterialPageRoute(
-              //         builder: (ctx) => BlocProvider.value(
-              //           //BlocProvider.value allows us to pass a existing instance of the bloc
-              //           // to a new screen
-              //           //value: existingCubit,
-              //           value: BlocProvider.of<CounterCubit>(context),
-              //           child: SecondScreen(
-              //             title: 'Second Screen',
-              //             color: Colors.redAccent,
-              //           ),
-              //         ),
-              //       ),
-              //     );
-              //   },
-              //   child: Text('Go to next screen'),
-              // )
               SizedBox(
                 height: 24,
               ),
               MaterialButton(
                 color: widget.color,
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/second');
-                },
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              MaterialButton(
-                color: widget.color,
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/third');
-                },
-              ),
+                onPressed: () {},
+                child: Text('Go to next screen'),
+              )
             ],
           ),
         ),
