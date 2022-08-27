@@ -19,3 +19,6 @@
 [submodule "flutter_native_comunication"]
 	path = flutter_native_comunication
 	url = git@github.com:Ryss-D/flutter_native_comunication.git
+[submodule "posts_reader"]
+	path = posts_reader
+	url = git@github.com:Ryss-D/posts_reader.git
