@@ -22,3 +22,9 @@
 [submodule "posts_reader"]
 	path = posts_reader
 	url = git@github.com:Ryss-D/posts_reader.git
+[submodule "hive_app"]
+	path = hive_app
+	url = git@github.com:Ryss-D/hive_app.git
+[submodule "panic_button"]
+	path = panic_button
+	url = git@github.com:Ryss-D/panic_button.git
