@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             create: (context) => InternetCubit(connectivity: connectivity)),
         BlocProvider<CounterCubit>(
             create: (ctx) => CounterCubit(
-                internetCubit: BlocProvider.of<InternetCubit>(context))),
+                internetCubit: BlocProvider.of<InternetCubit>(ctx))),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

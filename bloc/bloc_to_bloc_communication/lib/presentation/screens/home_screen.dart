@@ -85,7 +85,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   FloatingActionButton(
                     onPressed: () {
-                      BlocProvider.of<CounterCubit>(context).decrement();
+                      // BlocProvider.of<CounterCubit>(context, listen: false)
+                      //    .decrement();
+                      // this i other way to use the fuctions inside a bloc/cubit
+                      context.read<CounterCubit>().decrement();
                       // this implementations are equivalent
                       //context.bloc<CounterCubit>().decrement();
                     },
