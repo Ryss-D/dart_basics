@@ -1,3 +1,5 @@
+import 'package:bloc_to_bloc_communication/constants/enums.dart';
+import 'package:bloc_to_bloc_communication/logic/cubit/internet_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,6 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //we could replpace the stream suscription aproac with a bloc listener aproacch
+    // this will avoid have to think aboyut closing streams
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -51,15 +55,26 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              BlocBuilder<CounterCubit, CounterState>(
+              BlocBuilder<InternetCubit, InternetState>(
                 builder: (context, state) {
-                  return Text(
-                    state.counterValue.toString(),
-                    style: Theme.of(context).textTheme.headline4,
-                  );
+                  if (state is InternetConnected &&
+                      state.connectionType == ConnectionType.Wifi) {
+                    return Text(
+                      'Wifi',
+                      style: Theme.of(context).textTheme.headline4,
+                    );
+                  } else if (state is InternetConnected &&
+                      state.connectionType == ConnectionType.Mobile) {
+                    return Text(
+                      'Wifi',
+                      style: Theme.of(context).textTheme.headline4,
+                    );
+                  } else {
+                    return Text(
+                      'No connection',
+                      style: Theme.of(context).textTheme.headline4,
+                    );
+                  }
                 },
                 buildWhen: (previusState, state) {
                   return state != previusState;
