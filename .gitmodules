@@ -31,3 +31,6 @@
 [submodule "rick_and_morty_poc"]
 	path = rick_and_morty_poc
 	url = git@github.com:Ryss-D/rick_and_morty_poc.git
+[submodule "book_club_app"]
+	path = book_club_app
+	url = git@github.com:Ryss-D/book_club_app.git
