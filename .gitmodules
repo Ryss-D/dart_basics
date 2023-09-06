@@ -34,3 +34,6 @@
 [submodule "book_club_app"]
 	path = book_club_app
 	url = git@github.com:Ryss-D/book_club_app.git
+[submodule "flickpedia"]
+	path = flickpedia
+	url = git@github.com:Ryss-D/flickpedia.git
