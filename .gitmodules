@@ -37,3 +37,6 @@
 [submodule "flickpedia"]
 	path = flickpedia
 	url = git@github.com:Ryss-D/flickpedia.git
+[submodule "frog"]
+	path = frog
+	url = git@github.com:Ryss-D/frog.git
